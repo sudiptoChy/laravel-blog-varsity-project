@@ -15,8 +15,8 @@ class Categories extends Migration
     {
         Schema::create('categories',function(Blueprint $table){
             $table->increments('cat_id');
-            $table->string('cat_name')->unique();
-            $table->string('author_name');
+            $table->string('cat_name');
+            $table->string('author_id');
             $table->timestamps();
         });
     }
@@ -28,8 +28,6 @@ class Categories extends Migration
      */
     public function down()
     {
-        Schema::table('categories',function(Blueprint $table){
-            $table->renameColumn('author_name','author_id');
-        });
+        Schema::dropIfExists('categories');
     }
 }

@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace App\Http\Controllers;
 
 
@@ -35,19 +35,19 @@ class categoriesController extends Controller{
 			$categoriesInsert = DB::table('categories')->insert(
 				[
 					'cat_name' => strtolower($cat_name),
-					'author_name' => $author_name
+					'author_id' => $author_name
 				]
 			);
 			return json_encode('categories created successfully');
 		}else{
-			return json_encode('categories already store in database');
+			return json_encode('categories already stored in database');
 		}
 
 	}
 
 	public function showCategoriesListByAuthor($author_id){
 
-		$authorList = DB::table($this->tableName)->where('author_name',$author_id)->get();
+		$authorList = DB::table($this->tableName)->where('author_id',$author_id)->get();
 		return $authorList;
 	}
 
